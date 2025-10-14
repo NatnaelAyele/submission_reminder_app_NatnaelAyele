@@ -1,8 +1,15 @@
 #!/bin/bash
-echo "Welocome!"
+echo "Welcome!"
+
+#prompt the user to enter name and capture the input
 read -p "Enter your name, please: " name
 parent_dir="submission_reminder_${name}"
+
+#create a main directory based on the name accepted from user and its following sub-directories
 mkdir -p $parent_dir/{app,modules,assets,config}
+
+# Create the reminder.sh file inside the 'app' directory
+# append a script to reminder.sh that loads configuration files and helper functions, displays assignment details, and runs the submission reminder check
 
 cat > $parent_dir/app/reminder.sh << 'DATA'
 #!/bin/bash
@@ -22,6 +29,9 @@ echo "--------------------------------------------"
 check_submissions $submissions_file
 DATA
 
+#create the function.sh file inside 'modules' directory
+#append a script to function.sh. The script defines a function that checks the submissions file and identifies students who have not submitted their assignments.
+#the script is taken from the resources provided in the assignment submission page
 cat > $parent_dir/modules/functions.sh << 'DATA'
 #!/bin/bash
 #
@@ -44,6 +54,9 @@ function check_submissions {
     done < <(tail -n +2 "$submissions_file") # Skip the header
 }
 DATA
+#create the submissions.txt file inside 'assets' directory
+#append a data of student's name the assignment they're working on and the submission status for each student into submissions.txt
+#the data is taken from the resources provided in the assignment submission page
 
 cat > $parent_dir/assets/submissions.txt << 'DATA'
 student, assignment, submission status
@@ -58,18 +71,24 @@ Natnael, Git, not submitted
 Fidel, Shell Navigation, not submitted
 DATA
 
+# Create the config.env file inside the 'config' directory 
+# append a data to config.env. This data defines environment variables used by the reminder script.
 cat > $parent_dir/config/config.env << 'DATA'
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 DATA
 
+# Create the startup.sh script inside the main directory
+# append a script to startup.sh that runs the main reminder.sh script.
 cat > $parent_dir/startup.sh << 'DATA'
 #!/bin/bash
 bash ./app/reminder.sh
 DATA
 
+#find all .sh files inside the main directory and give execute permission to all of them
 find "$parent_dir" -type f -name "*.sh" -exec chmod +x {} \;
-echo "creating a directory based on your name...............hang on!!!!!"
+
+#print a completion and exiting messages
 echo "Directory created, environment created successfully"
-echo "You can now go to the ${parent_dir} and run the startup.sh file to start the application"
+echo "You can now go to ${parent_dir} and run the startup.sh file to start the application"
