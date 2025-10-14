@@ -50,11 +50,11 @@ student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
 Chiagoziem, Git, submitted
 Divine, Shell Navigation, not submitted
-Anissa, Shell Basics, submitted
-simeon, Git, submitted
+Anissa, Shell Basics, not submitted
+simeon, Git, not submitted
 Bonnita, Shell Navigation, not submitted
-Jenifer, Shell Basics, submitted
-Natnael, Git, submitted
+Jenifer, Shell Basics, not submitted
+Natnael, Git, not submitted
 Fidel, Shell Navigation, not submitted
 DATA
 
