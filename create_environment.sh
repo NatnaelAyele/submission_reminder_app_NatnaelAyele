@@ -66,7 +66,7 @@ DATA
 
 cat > $parent_dir/startup.sh << 'DATA'
 #!/bin/bash
-./$parent_dir/app/reminder.sh
+bash ./app/reminder.sh
 DATA
 
 find "$parent_dir" -type f -name "*.sh" -exec chmod +x {} \;
