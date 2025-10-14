@@ -1,7 +1,14 @@
 #!/bin/bash
 dirs=(submission_reminder_*/)
 
-if [ "${#dirs[@]}" -gt 1 ]; then
+shopt -s nullglob
+dirs=(submission_reminder_*/)
+
+if [ "${#dirs[@]}" -eq 0 ]; then
+        echo "No environment detected!!!"
+        echo "First, run create_environment.sh to create an environment"
+        exit 1
+elif [ "${#dirs[@]}" -gt 1 ]; then
         echo "Found ${#dirs[@]} environments. Choose one by entering a number: "
         select dir in "${dirs[@]}"; do
                 if [ -n "dir" ]; then
@@ -11,12 +18,9 @@ if [ "${#dirs[@]}" -gt 1 ]; then
                         echo "enter a vslid option!!!"
                 fi
         done
-elif [ "${#dirs[@]}" -eq 1 ]; then
-        dir="${dirs[0]}"
-        echo "found environment is ${dirs[0]}"
 else
-        echo "No environment detected!!!"
-        echo "First, run create_environment.sh to create an environment"
+          dir="${dirs[0]}"
+        echo "found environment is ${dirs[0]}"
 fi
 
 config_dir="${dir}config/config.env"
