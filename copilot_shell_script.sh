@@ -58,8 +58,6 @@ echo "======================================="
 echo
 
 
-#ask the teacher and delete this feature if it is not neccessary
-
 #change directory to the selected environment
 cd "$dir"
 #run the startup.sh script file
