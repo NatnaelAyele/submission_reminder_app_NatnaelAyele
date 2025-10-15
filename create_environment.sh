@@ -5,13 +5,14 @@ echo "Welcome!"
 read -p "Enter your name, please: " name
 parent_dir="submission_reminder_${name}"
 
-#check if name entered is not empty
+#check if name entered is empty
+#if it is emepty display an error message and exit the program
 if [[ -z "$name" ]]; then
   echo "Error: Name cannot be empty. Please run the script again." >&2
   exit 1
 fi
 #create a main directory based on the name accepted from user and its following sub-directories
-#if the directories were not able to be created display error message and exit the program
+#if the directories were not able to be created display an error message and exit the program
 mkdir -p "$parent_dir"/{app,modules,assets,config} || { 
     echo "Error: Unable to create directories in '$parent_dir' run the program agin." >&2
     exit 1
@@ -20,7 +21,7 @@ mkdir -p "$parent_dir"/{app,modules,assets,config} || {
 
 # Create the reminder.sh file inside the 'app' directory
 # append a script to reminder.sh that loads configuration files and helper functions, displays assignment details, and runs the submission reminder check
-
+#the script is taken from the resources provided in the assignment submission page
 cat > "$parent_dir/app/reminder.sh" << 'DATA'
 #!/bin/bash
 
@@ -81,16 +82,17 @@ Natnael, Git, not submitted
 Fidel, Shell Navigation, not submitted
 DATA
 
-# Create the config.env file inside the 'config' directory 
-# append a data to config.env. This data defines environment variables used by the reminder script.
+#create the config.env file inside the 'config' directory 
+#append a data to config.env. This data defines environment variables used by the reminder script.
+#the script is taken from the resources provided in the assignment submission page
 cat > "$parent_dir/config/config.env" << 'DATA'
 # This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 DATA
 
-# Create the startup.sh script inside the main directory
-# append a script to startup.sh that runs the main reminder.sh script.
+#create the startup.sh script inside the main directory
+#append a script to startup.sh that runs the main reminder.sh script.
 cat > "$parent_dir/startup.sh" << 'DATA'
 #!/bin/bash
 bash ./app/reminder.sh
