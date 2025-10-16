@@ -13,7 +13,9 @@ The environment’s structure looks like this:
 
 ![Project Environment Structure](https://drive.google.com/uc?export=view&id=1ZcFmTyCwvnbTPdCrPd5DEY2xKxRCd8Ot)
 
-From what we can see, the environment has four directories and a startup script file, which are needed to run the application. The application can be started by running the startup.sh script.
+From what we can see, the environment has four directories and a startup script file, which are needed to run the application. 
+    The main script that has the code for the application is the reminder.sh file.
+    The application can be started easily by running the startup.sh script.
 
 2. copilot_shell_script.sh
 
