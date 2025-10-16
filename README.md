@@ -9,6 +9,8 @@ How it works:
 Upon running this script, you will be prompted to enter a name. Once you enter a name, an environment will be created based on your input. The naming format is “submission_reminder_<name>”.
 
 The environment’s structure looks like this:
+
+
 ![Project Environment Structure](https://drive.google.com/uc?export=view&id=1ZcFmTyCwvnbTPdCrPd5DEY2xKxRCd8Ot)
 
 From what we can see, the environment has four directories and a startup script file, which are needed to run the application. The application can be started by running the startup.sh script.
