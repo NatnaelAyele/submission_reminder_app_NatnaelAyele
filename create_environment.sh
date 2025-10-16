@@ -93,8 +93,9 @@ DATA
 
 #create the startup.sh script inside the main directory
 #append a script to startup.sh that runs the main reminder.sh script.
-cat > "$parent_dir/startup.sh" << 'DATA'
+cat > "$parent_dir/startup.sh" << DATA
 #!/bin/bash
+cd "$parent_dir"
 bash ./app/reminder.sh
 DATA
 
